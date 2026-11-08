@@ -1,6 +1,7 @@
 NAME = ircserv
 
 SRCS = main.cpp \
+	Server.cpp 
 
 OBJ_DIR = obj
 OBJS = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
