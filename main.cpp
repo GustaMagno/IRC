@@ -2,9 +2,11 @@
 
 int	parsingArg(char **argv, int &serverPort, std::string &password)
 {
-	(void) argv;
-	(void) serverPort;
-	(void) password;
+	std::stringstream ss(argv[1]);
+
+	if (!(ss >> serverPort && ss.eof()))
+		return (0);
+	password = argv[2];
 	return (1);
 }
 

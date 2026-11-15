@@ -5,6 +5,7 @@
 # include <string>
 # include <vector>
 # include <map>
+# include <list>
 # include <sstream>
 # include <cstdlib>
 # include <cstring>
@@ -22,11 +23,15 @@ class Server
 {
 private:
 	std::vector <struct pollfd> socketList;
-	std::string port;
-	std::string password;
+	std::list<int>				clientList;
+	std::string 				port;
+	std::string 				password;
 public:
 	Server(int port, std::string password);
 	~Server();
+
+	// addClient();
+	// removeClient();
 };
 
 #endif
