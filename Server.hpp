@@ -12,6 +12,7 @@
 # include <csignal>
 # include <fcntl.h>
 # include <unistd.h>
+# include <exception>
 
 # include <sys/socket.h>
 # include <netinet/in.h>
@@ -24,10 +25,23 @@ class Server
 private:
 	std::vector <struct pollfd> socketList;
 	std::list<int>				clientList;
-	std::string 				port;
 	std::string 				password;
+	int							port;
+	int			 				serverFd;
 public:
 	Server(int port, std::string password);
+	class ServerException : public std::exception {
+	private:
+		std::string _msg;
+	public:
+		ServerException(const std::string &msg) : _msg(msg) {}
+		virtual ~ServerException() throw() {}
+		virtual const char *what() const throw() {
+			return _msg.c_str();
+		}
+	};
+
+	void	ServerInitSocketServ();
 	~Server();
 
 	// addClient();
