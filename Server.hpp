@@ -41,7 +41,7 @@ public:
 		}
 	};
 
-	void	ServerInitSocketServ();
+	void	ServerInitSocket();
 	~Server();
 
 	// addClient();
